@@ -1,0 +1,19 @@
+[
+    {
+        "id":1,
+        "author":{
+            "firstName":"",
+            "lastName":""
+        },
+        "date":"",
+        "text":"",
+        "group":"",
+        "kudos":{
+            "firstName":"",
+            "lastName":"",
+            "type":""
+        },
+        "likesCount":0,
+        "commentsCount":0
+    }
+]
