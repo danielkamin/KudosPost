@@ -1,14 +1,17 @@
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import image from './assets/images/undraw_teacher_35j2.svg';
-
-const App = ({ title })=>{
+import React,{Fragment} from 'react';
+import Home from './Pages'
+import GlobalStyle from './styles/globalStyles';
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/theme'
+const App = ()=>{
     return (
-        <div>{title}<img src={image}/></div>
+        <ThemeProvider theme={theme}>       
+            <Fragment>
+                <GlobalStyle/>
+                <Home/>
+            </Fragment>
+        </ThemeProvider>
     )
-}
-App.propTypes = {
-    title: PropTypes.string.isRequired
 }
 export default App;
