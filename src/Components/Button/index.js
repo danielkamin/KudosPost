@@ -10,17 +10,18 @@ border-radius:${props=>props.theme.borderRadius};
 border:none;
 `
 
-const Button = ({children})=>{
+const CustomButton = ({children,type})=>{
 
     return (
-        <StyledButton>
+        <StyledButton type={type}>
             {children}
         </StyledButton>
     )
 }
-
-export default Button;
-
-Button.propTypes = {
-    children:PropTypes.string
+CustomButton.propTypes = {
+    children:PropTypes.string,
+    type:PropTypes.string
 }
+export default CustomButton;
+
+

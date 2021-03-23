@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React,{useState,useRef,useMemo,useCallback} from 'react'
+import PropTypes from 'prop-types'
 
 //draft.js imports
 import {EditorState} from "draft-js";
@@ -9,7 +9,7 @@ import createEmojiPlugin from '@draft-js-plugins/emoji';
 
 //styles import
 import editorStyles from './EditorStyles.module.css';
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 
 //data import
 import users from '../../Data/users.json'
@@ -20,16 +20,20 @@ import Attach from '../../assets/images/attach.svg'
 import Gif from '../../assets/images/gif.svg'
 
 const StyledTextInput = styled.div`
-width:500px;
+width:100%;
 border:1px solid ${props=>props.theme.colors.border.secondary};
 border-radius:${props=>props.theme.borderRadius};
 cursor: text;
 background:${props=>props.theme.colors.background.secondary};
 position:relative;
 padding:${props=>props.theme.fontSize.sm};
+min-height: 30px;
+${({large})=>
+large && css`min-height: 120px`}
+
 `
 
-const TextInput = ({className,onMentionChange})=>{
+const TextInput = ({onMentionChange,large})=>{
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
     const [suggestions,setSuggestions]=useState(users)
@@ -58,7 +62,7 @@ const TextInput = ({className,onMentionChange})=>{
       }, [])
     
     return (
-        <StyledTextInput className={className}onClick={()=>{ref.current.focus()}} >
+        <StyledTextInput large={large} onClick={()=>{ref.current.focus()}} >
                 <Editor editorState={editorState} onChange={setEditorState} plugins={plugins} ref={ref}/>
                 <EmojiSuggestions />
                 <MentionSuggestions onSearchChange={handleSearchChange} suggestions={suggestions} open={open}
@@ -70,6 +74,10 @@ const TextInput = ({className,onMentionChange})=>{
             </div>
         </StyledTextInput>
     )
+}
+TextInput.propTypes = {
+    onMentionChange:PropTypes.func,
+    large:PropTypes.bool
 }
 
 export default TextInput;
