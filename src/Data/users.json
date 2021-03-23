@@ -1,26 +1,20 @@
 [
     {
-        "firstName":"Daniel",
-        "lastName":"Kamiński"
+        "name":"Daniel Kamiński"
     },
     {
-        "firstName":"Jan",
-        "lastName":"Kowalski"
+        "name":"Jan Kowalski"
     },
     {
-        "firstName":"Barbara",
-        "lastName":"Klimowicz"
+        "name":"Barbara Klimowicz"
     },
     {
-        "firstName":"Jon",
-        "lastName":"Doe"
+        "name":"Jon Doe"
     },
     {
-        "firstName":"Mieszko",
-        "lastName":"Pierwszy"
+        "name":"Mieszko Pierwszy"
     },
     {
-        "firstName":"Donald",
-        "lastName":"Trump"
+        "name":"Donald Trump"
     }
 ]

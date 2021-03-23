@@ -2,31 +2,31 @@
     {
         "type":"",
         "text":"Dziękuję ci",
-        "url":""
+        "imageUrl":"src/assets/images/undraw_super_thank_you_obwk.svg"
     },
     {
         "type":"",
         "text":"Gratulacje!",
-        "url":""
+        "imageUrl":""
     },
     {
         "type":"",
         "text":"Gracz zespołowy",
-        "url":""
+        "imageUrl":""
     },
     {
         "type":"",
         "text":"Pozytywny wpływ",
-        "url":""
+        "imageUrl":""
     },
     {
         "type":"",
         "text":"Świetny współpracownik",
-        "url":""
+        "imageUrl":""
     },
     {
         "type":"",
         "text":"Przechodzisz samego (samą) siebie",
-        "url":""
+        "imageUrl":""
     }
 ]

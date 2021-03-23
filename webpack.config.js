@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const path = require('path');
-const webpack = require('webpack');
 module.exports = {
   entry: path.resolve(__dirname,'./src/index.js'),
   module: {
@@ -34,7 +33,6 @@ module.exports = {
     path:path.join(__dirname,'/dist'),
     filename:'bundle.js',
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer:{
     contentBase: path.resolve(__dirname, './dist'),
     hot:true

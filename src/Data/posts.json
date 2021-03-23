@@ -1,19 +1,42 @@
 [
     {
         "id":1,
-        "author":{
-            "firstName":"",
-            "lastName":""
-        },
+        "author":"Daniel Kamiński",
         "date":"",
-        "text":"",
-        "group":"",
+        "content":"Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.",
+        "group":"Warszawa",
         "kudos":{
-            "firstName":"",
-            "lastName":"",
+            "name":"",
             "type":""
         },
         "likesCount":0,
         "commentsCount":0
+    },
+    {
+        "id":2,
+        "author":"Jon Doe",
+        "date":"",
+        "content":"Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.",
+        "group":"Białystok",
+        "kudos":{
+            "name":"",
+            "type":""
+        },
+        "likesCount":3,
+        "commentsCount":3
+    },
+    {
+        "id":3,
+        "author":"Daniel Kamiński",
+        "date":"",
+        "content":"Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.",
+        "group":"Kraków",
+        "kudos":{
+            "name":"",
+            "type":""
+        },
+        "likesCount":4,
+        "commentsCount":4
     }
+
 ]

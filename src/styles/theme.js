@@ -21,11 +21,18 @@ const theme = {
             primary:`#A8996F`,
             secondary:`#78107E`,
             secondaryLight:`#96459A`
+        },
+        border:{
+            primary:`#EEEEEE`,
+            secondary:`#E5E1E1`
         }
     },
-    size:{
-        font:`16px`
-    }
+    fontSize:{
+        sm:`12px`,
+        md:`16px`,
+        lg:`24px`
+    },
+    borderRadius:`6px`
 }
 
 export default theme;
