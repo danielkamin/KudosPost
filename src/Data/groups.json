@@ -1,17 +1,22 @@
 [
     {"id":1,
-    "content":"Białystok"
+    "content":"Białystok",
+    "icon":"\uf64f"
     },
     {"id":2,
-    "content":"Kraków"
+    "content":"Kraków",
+    "icon":"\uf64f"
     },
     {"id":3,
-    "content":"Warszawa"
+    "content":"Warszawa",
+    "icon":"\uf64f"
     },
     {"id":4,
-    "content":"Gdańsk"
+    "content":"Gdańsk",
+    "icon":"\uf64f"
     },
     {"id":5,
-    "content":"Poznań"
+    "content":"Poznań",
+    "icon":"\uf64f"
     }
 ]

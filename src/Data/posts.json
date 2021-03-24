@@ -1,40 +1,34 @@
 [
     {
-        "id":1,
+        "id":3,
         "author":"Daniel Kamiński",
-        "date":"",
-        "content":"Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.",
+        "content":"Wielkie dzieki za działający HTML",
         "group":"Warszawa",
-        "kudos":{
-            "name":"",
-            "type":""
-        },
+        "kudosPerson":"Jon Doe",
+        "kudosType":1,
+        "postGroup":2,
         "likesCount":0,
         "commentsCount":0
     },
     {
         "id":2,
         "author":"Jon Doe",
-        "date":"",
-        "content":"Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.",
+        "content":"Wielkie dzieki za działający HTML",
         "group":"Białystok",
-        "kudos":{
-            "name":"",
-            "type":""
-        },
+        "kudosPerson":"Jon Doe",
+        "kudosType":2,
+        "postGroup":2,
         "likesCount":3,
         "commentsCount":3
     },
     {
-        "id":3,
+        "id":1,
         "author":"Daniel Kamiński",
-        "date":"",
-        "content":"Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.",
+        "content":"Wielkie dzieki za działający HTML",
         "group":"Kraków",
-        "kudos":{
-            "name":"",
-            "type":""
-        },
+        "kudosPerson":"Daniel Kamiński",
+        "kudosType":3,
+        "postGroup":3,
         "likesCount":4,
         "commentsCount":4
     }

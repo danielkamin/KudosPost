@@ -1,18 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-const StyledPost = ({content,kudos,group,author,likesCount,commentsCount})=>{
-    return <div>
-        {console.log(content,kudos,group,likesCount,commentsCount,author)}
-    </div>
+
+import styled from 'styled-components';
+import Kudos from '../Kudos/index'
+
+const StyledPost = styled.div`
+display:flex;
+flex-direction:column;
+background-color:${props=>props.theme.colors.background.secondary};
+border-color:${props=>props.theme.colors.border.primary};
+`
+const DisplayPost = ({post})=>{
+    return <StyledPost>
+        {post.postContent}
+        <Kudos/>
+    </StyledPost>
 }
 
-export default StyledPost
+export default DisplayPost
 
-StyledPost.propTypes={
-    content:PropTypes.string,
-    kudos:PropTypes.object,
-    group:PropTypes.string,
-    likesCount:PropTypes.number,
-    commentsCount:PropTypes.number,
-    author:PropTypes.string,
+DisplayPost.propTypes={
+    post:PropTypes.object.isRequired
 }

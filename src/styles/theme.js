@@ -29,8 +29,8 @@ const theme = {
     },
     fontSize:{
         sm:`12px`,
-        md:`16px`,
-        lg:`24px`
+        md:`14px`,
+        lg:`20px`
     },
     borderRadius:`6px`
 }

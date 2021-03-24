@@ -14,6 +14,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background-color:${props=>props.theme.colors.background.primary}`;
+background-color:${props=>props.theme.colors.background.primary};
+font-size:${props=>props.theme.fontSize.md};`
 
 export default GlobalStyle;

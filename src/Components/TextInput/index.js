@@ -2,7 +2,6 @@ import React,{useState,useRef,useMemo,useCallback} from 'react'
 import PropTypes from 'prop-types'
 
 //draft.js imports
-import {EditorState} from "draft-js";
 import Editor from "@draft-js-plugins/editor"
 import createMentionPlugin,{defaultSuggestionsFilter} from '@draft-js-plugins/mention'
 import createEmojiPlugin from '@draft-js-plugins/emoji';
@@ -33,13 +32,10 @@ large && css`min-height: 120px`}
 
 `
 
-const TextInput = ({onMentionChange,large})=>{
+const TextInput = ({onMentionChange,large,editorState, setEditorState})=>{
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
     const [suggestions,setSuggestions]=useState(users)
-    const [editorState, setEditorState] = useState(() =>
-        EditorState.createEmpty()
-    );   
     const { MentionSuggestions, plugins,EmojiSuggestions, EmojiSelect } = useMemo(() => {
     const emojiPlugin = createEmojiPlugin({useNativeArt: true,});
     const mentionPlugin = createMentionPlugin({
@@ -77,7 +73,9 @@ const TextInput = ({onMentionChange,large})=>{
 }
 TextInput.propTypes = {
     onMentionChange:PropTypes.func,
-    large:PropTypes.bool
+    large:PropTypes.bool,
+    setEditorState:PropTypes.func,
+    editorState:PropTypes.object
 }
 
 export default TextInput;

@@ -6,38 +6,69 @@ import PropTypes from 'prop-types'
 import styled,{css} from 'styled-components';
 
 const StyledKudos = styled.div`
+padding:10px 10px;
 display:flex;
 text-align:center;
-align-content:center;
+align-items: center;
 width:100%;
-border:1px solid ${props=>props.theme.colors.border.secondary};
+cursor:pointer;
 border-radius:${props=>props.theme.borderRadius};
-background:${props=>props.theme.colors.background.secondary};
 font-size:${props=>props.theme.fontSize.md};
+margin-bottom:20px;
 ${({large})=>
-large? css`
+large? 
+css`
+& img{
+    width:30%;
     height: 100px;
-    
+    max-width:125px;
+}`:
+css`
+& img{
+    width:20%;
+    height: 50px;
+    max-width:75px;
+}`
+
+}
+${({selected})=>
+selected? css`
+    background:${props=>props.theme.colors.border.primary};
+    border:1px solid ${props=>props.theme.colors.details.primary}
 `:css`
-    height: 200px;
+background:${props=>props.theme.colors.background.secondary};
+    border:1px solid ${props=>props.theme.colors.border.primary};
 `}
 `
+const StyledKudosContent = styled.div`
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    flex-direction: column;
+    & :nth-child(2){
+        font-weight:bold;
+    }
+`
 
-const Kudos = ({large,name,imageUrl,text})=>{
-
-    return(<StyledKudos large={large}>
+const Kudos = ({selected,name,imageUrl,text,onClick,id})=>{
+    
+    return(<StyledKudos selected={selected} onClick={()=>onClick(id)} key={id}>
         <img src={imageUrl.default}/>
-        <div>
+        <StyledKudosContent>
             <p>{text}</p>
             <p>{name? name:"Imie nazwisko"}</p>
-        </div>
+        </StyledKudosContent>
     </StyledKudos>)
 }
 
 Kudos.propTypes = {
+    id:PropTypes.number.isRequired,
     imageUrl:PropTypes.object || PropTypes.string ,
     name:PropTypes.string,
     text:PropTypes.string,
-    large:PropTypes.bool
+    selected:PropTypes.bool,
+    onClick: PropTypes.func
 }
 export default Kudos
