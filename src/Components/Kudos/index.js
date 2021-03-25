@@ -15,21 +15,10 @@ cursor:pointer;
 border-radius:${props=>props.theme.borderRadius};
 font-size:${props=>props.theme.fontSize.md};
 margin-bottom:20px;
-${({large})=>
-large? 
-css`
-& img{
-    width:30%;
-    height: 100px;
-    max-width:125px;
-}`:
-css`
 & img{
     width:20%;
     height: 50px;
     max-width:75px;
-}`
-
 }
 ${({selected})=>
 selected? css`

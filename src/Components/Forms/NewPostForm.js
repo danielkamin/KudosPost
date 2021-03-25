@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React,{useEffect, useState} from 'react'
+import PropTypes from 'prop-types'
 import {EditorState,convertToRaw} from "draft-js";
 
 //form components input
-import CustomButton from '../Button/index'
-import TextInput from '../Editor/index'
+import SimpleButton from '../Buttons/SimpleButton'
+import PostContent from '../Editor/PostContent'
 import CustomSelect from '../Select'
 import Kudos from '../Kudos/index'
 import PersonSelect from '../PersonSelect/index'
@@ -15,8 +16,10 @@ import kudosTypes from '../../Data/kudosTypes'
 
 //styles import
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
-//styles
+
+
+
+//styles declaration
 const StyledForm = styled.form`
 display:flex;
 flex-direction:column;
@@ -31,12 +34,17 @@ font-weight:bold;
 margin-bottom:10px;
 margin-top:20px;
 `
-
-const NewPost= ({onSubmit})=>{
+const StyledError = styled.p`
+margin-top:10px;
+text-align:center;
+color:red;
+`
+const NewPostForm= ({onSubmit})=>{
     const [kudosPerson,setKudosPerson] = useState('')
     const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
-    );   
+    );
+    const [errorMessage,setErrorMessage] = useState('')   
     const [groupSelected,setGroupSelected] = useState(+groups[0].id)
     const [kudosSelected,setKudosSelected] = useState(kudosTypes[0].id)
     useEffect(()=>{
@@ -52,13 +60,21 @@ const NewPost= ({onSubmit})=>{
     }
     const createKudosPost = (e)=>{
         e.preventDefault();
-        onSubmit(kudosPerson,convertToRaw(editorState.getCurrentContent()),groupSelected,kudosSelected);
+        if(editorState.getCurrentContent().getPlainText('').length>500) setErrorMessage('Przekroczono ilość znaków!')
+        else if((editorState.getCurrentContent().getPlainText('').length==0)) setErrorMessage('Treść jest pusta!')
+        else {
+            setErrorMessage('')
+            onSubmit(kudosPerson,convertToRaw(editorState.getCurrentContent()),groupSelected,kudosSelected);
+        }
     }
     return (
         <StyledForm onSubmit={createKudosPost}>
+            <StyledError>
+                {errorMessage}
+            </StyledError>
             <div>
                 <StyledSubTitle>Treść posta nad kudosem</StyledSubTitle>
-                <TextInput large onMentionChange={handleMentionChange} editorState={editorState} setEditorState={setEditorState}/>
+                <PostContent large onMentionChange={handleMentionChange} editorState={editorState} setEditorState={setEditorState} maxCharacters={500}/>
             </div>
             <div>
                 <StyledSubTitle>Wybierz osobę której przyznajesz kudos</StyledSubTitle>
@@ -71,12 +87,12 @@ const NewPost= ({onSubmit})=>{
             <StyledSubTitle>Wybierz grupę</StyledSubTitle>
             <StyledDiv>  
                 <CustomSelect items={groups} onChange={handleSelectGroupChange} value={groupSelected}/>
-                <CustomButton type='submit'>Opublikuj</CustomButton>
+                <SimpleButton type='submit'>Opublikuj</SimpleButton>
             </StyledDiv>        
         </StyledForm>
     )
 }
-NewPost.propTypes = {
+NewPostForm.propTypes = {
     onSubmit:PropTypes.func.isRequired
 }
-export default NewPost;
+export default NewPostForm;

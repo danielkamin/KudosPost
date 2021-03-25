@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState} from 'react'
 
 import { Main } from '../../styles/globalStyles';
 import {AppContext} from '../../Context/AppContext'
@@ -6,7 +6,8 @@ import {AppContext} from '../../Context/AppContext'
 
 import DisplayPost from '../../Components/Post'
 import CustomModal from '../../Components/NewPost/Modal'
-import NewPost from '../../Components/NewPost/Form'
+import NewPostForm from '../../Components/Forms/NewPostForm'
+import NewPostButton from '../../Components/Buttons/NewPostButton'
 
 import Post from '../../Classes/post'
 
@@ -18,18 +19,22 @@ import agreementIcon from '../../assets/images/agreement.svg'
  */
 const Home = ()=>{
     const {contextPosts , setContextPosts} = useContext(AppContext);
+    const [openModal,setOpenModal] = useState(false)
     const handleSubmitPost = (kudosPerson,editorStateCurrentContent,groupSelected,kudosSelected)=>{
-        console.log(editorStateCurrentContent)
+        setOpenModal(false);
         const newPost = new Post(new Date(),editorStateCurrentContent,kudosPerson,groupSelected,kudosSelected,contextPosts[0].id+1)
         setContextPosts([newPost,...contextPosts])
     }
     return (
         <Main>
+            <NewPostButton onClick={()=>{
+                setOpenModal(!openModal)
+            }}/>
             {contextPosts.map(post=>(
                 <DisplayPost key={post.id} post={post}/>
             ))}
-                <CustomModal text='Utwórz kudos' icon={agreementIcon}>
-                    <NewPost onSubmit={handleSubmitPost}/>
+                <CustomModal text='Utwórz kudos' icon={agreementIcon} open={openModal} closeModal={()=>{setOpenModal(false)}}>
+                    <NewPostForm onSubmit={handleSubmitPost}/>
                 </CustomModal>
         </Main>
     )

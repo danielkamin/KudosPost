@@ -22,10 +22,10 @@ secondary? css`
 `}
 `
 
-const IconButton = ({secondary,children,disabled})=>{
+const IconButton = ({secondary,children,disabled,onClick})=>{
     return (
         <div>
-            <StyledIconButton secondary={secondary} disabled={disabled}>
+            <StyledIconButton secondary={secondary} disabled={disabled} onClick={onClick}>
                 {children}
             </StyledIconButton>
         </div>
@@ -37,5 +37,6 @@ export default IconButton;
 IconButton.propTypes = {
     children:PropTypes.element,
     disabled:PropTypes.bool,
-    secondary:PropTypes.bool
+    secondary:PropTypes.bool,
+    onClick:PropTypes.func
 }

@@ -13,6 +13,7 @@ export const Main = styled.main`
 min-height:100vh;
 display:flex;
 justify-content:center;
+flex-direction:column;
 align-items:center;
 background-color:${props=>props.theme.colors.background.primary};
 font-size:${props=>props.theme.fontSize.md};`

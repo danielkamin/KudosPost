@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import Editor from "@draft-js-plugins/editor"
 import createMentionPlugin,{defaultSuggestionsFilter} from '@draft-js-plugins/mention'
 import createEmojiPlugin from '@draft-js-plugins/emoji';
+import createHashtagPlugin from '@draft-js-plugins/hashtag';
+
 
 //styles import
 import editorStyles from './EditorStyles.module.css';
@@ -15,7 +17,7 @@ import styled,{css} from 'styled-components';
 import users from '../../Data/users.json'
 
 //additional components import
-import IconButton from '../IconButton/index'
+import IconButton from '../Buttons/IconButton'
 import Attach from '../../assets/images/attach.svg'
 import Gif from '../../assets/images/gif.svg'
 
@@ -26,26 +28,29 @@ border-radius:${props=>props.theme.borderRadius};
 cursor: text;
 background:${props=>props.theme.colors.background.secondary};
 position:relative;
-padding:${props=>props.theme.fontSize.sm};
-min-height: 30px;
-${({large})=>
-large && css`min-height: 120px`}
 
+${({large})=>
+large ? 
+    css`min-height: 120px;
+    padding:12px;` : 
+    css`padding:5px;
+    min-height: 30px;`}
 `
 
-const TextInput = ({onMentionChange,large,editorState, setEditorState})=>{
+const PostContent = ({onMentionChange,large,editorState, setEditorState,maxCharacters,placeHolder})=>{
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
     const [suggestions,setSuggestions]=useState(users)
     const { MentionSuggestions, plugins,EmojiSuggestions, EmojiSelect } = useMemo(() => {
     const emojiPlugin = createEmojiPlugin({useNativeArt: true,});
+    const hashtagPlugin = createHashtagPlugin();
     const mentionPlugin = createMentionPlugin({
         theme: editorStyles,
         supportWhitespace: true,
         mentionPrefix: '@',});
     const { EmojiSuggestions, EmojiSelect } = emojiPlugin;   
     const { MentionSuggestions } = mentionPlugin;
-    const plugins = [mentionPlugin,emojiPlugin];
+    const plugins = [mentionPlugin,emojiPlugin,hashtagPlugin];
     return { plugins, MentionSuggestions,EmojiSuggestions,EmojiSelect };
     }, []);
 
@@ -58,7 +63,7 @@ const TextInput = ({onMentionChange,large,editorState, setEditorState})=>{
     
     return (
         <StyledTextInput large={large} onClick={()=>{ref.current.focus()}} >
-                <Editor editorState={editorState} onChange={setEditorState} plugins={plugins} ref={ref}/>
+                <Editor placeholder={placeHolder} editorState={editorState} onChange={setEditorState} plugins={plugins} ref={ref}/>
                 <EmojiSuggestions />
                 <MentionSuggestions onSearchChange={handleSearchChange} suggestions={suggestions} open={open}
                 onOpenChange={handleOpenChange}  onAddMention={onMentionChange}/>
@@ -67,14 +72,19 @@ const TextInput = ({onMentionChange,large,editorState, setEditorState})=>{
                 <IconButton disabled={true}><img src={Attach}/></IconButton>
                 <IconButton disabled={true}><img src={Gif}/></IconButton>
             </div>
+            <div className={editorStyles.maxCharacter}>
+                {editorState.getCurrentContent().getPlainText('').length}/{maxCharacters}
+            </div>
         </StyledTextInput>
     )
 }
-TextInput.propTypes = {
+PostContent.propTypes = {
     onMentionChange:PropTypes.func,
     large:PropTypes.bool,
     setEditorState:PropTypes.func,
-    editorState:PropTypes.object
+    editorState:PropTypes.object,
+    maxCharacters:PropTypes.number,
+    placeHolder:PropTypes.string,
 }
 
-export default TextInput;
+export default PostContent;

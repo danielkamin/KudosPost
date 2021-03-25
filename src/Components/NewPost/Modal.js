@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 import close from '../../assets/images/close.svg'
-import IconButton from '../IconButton/index'
+import IconButton from '../Buttons/IconButton'
 
 const StyledModal = styled.div`
+position:absolute;
+top:10%;
+z-index:100;
 border:1px solid ${props=>props.theme.colors.border.secondary};
 border-radius:${props=>props.theme.borderRadius};
 background:${props=>props.theme.colors.background.secondary};
 width:560px;
 padding:20px 40px;
+${({open})=>
+open ? css`
+display:block;
+`:css`display:none;`}
 `
 const StyledModalHeader = styled.div`
 display:flex;
-margin-bottom:40px;
 align-items: center;
 & > div {
     margin-left:auto;
@@ -24,12 +30,9 @@ align-items: center;
     text-transform:uppercase;
 }
 `
-const CustomModal = ({children,text,icon})=>{
-    const closeModal = (e)=>{
-        e.preventDefault();
-    }
+const CustomModal = ({children,text,icon,open,closeModal})=>{
     console.log(children)
-    return <StyledModal>
+    return <StyledModal open={open}>
         <StyledModalHeader>
             <img src={icon}/>
             <p>{text}</p>
@@ -44,5 +47,7 @@ export default CustomModal;
 CustomModal.propTypes={
     children:PropTypes.element,
     text:PropTypes.string,
-    icon:PropTypes.string
+    icon:PropTypes.string,
+    open:PropTypes.bool,
+    closeModal:PropTypes.func
 }

@@ -4,15 +4,18 @@ import PropTypes from 'prop-types'
 const StyledButton = styled.button`
 height:32px;
 width:120px;
-
 background-color:${props=>props.theme.colors.details.secondary};
 color: white;
 cursor:pointer;
 border-radius:${props=>props.theme.borderRadius};
 border:none;
+transition:opacity 0.3s;
+&:hover{
+    opacity:0.5;
+}
 `
 
-const CustomButton = ({children,type})=>{
+const SimpleButton = ({children,type})=>{
 
     return (
         <StyledButton type={type}>
@@ -20,10 +23,10 @@ const CustomButton = ({children,type})=>{
         </StyledButton>
     )
 }
-CustomButton.propTypes = {
+SimpleButton.propTypes = {
     children:PropTypes.string,
     type:PropTypes.string
 }
-export default CustomButton;
+export default SimpleButton;
 
 

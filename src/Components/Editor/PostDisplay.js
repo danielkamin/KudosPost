@@ -1,20 +1,33 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React,{useMemo,useState} from 'react'
 import PropTypes from 'prop-types';
+
+//draf.js imports
 import createMentionPlugin from '@draft-js-plugins/mention'
+import createHashtagPlugin from '@draft-js-plugins/hashtag';
 import {EditorState,convertFromRaw} from "draft-js";
 import Editor from "@draft-js-plugins/editor"
 import editorStyles from './EditorStyles.module.css';
 
-
 const PostDisplay = ({postContent})=>{
-    const mentionPlugin = createMentionPlugin({
-        theme: editorStyles,
-        supportWhitespace: true,
-        mentionPrefix: '@',});
-    const plugins = [mentionPlugin];
     const content = convertFromRaw(postContent);  
-    const editorState = EditorState.createWithContent(content)
-    return  <Editor editorState={editorState} readOnly={true} plugins={plugins}/>
+    const [editorState, setEditorState] = useState(() =>
+    EditorState.createWithContent(content)
+    );
+    const {plugins} = useMemo(()=>{
+        const mentionPlugin = createMentionPlugin({
+            theme: editorStyles,
+            supportWhitespace: true,
+            mentionPrefix: '@',});
+        const hashtagPlugin = createHashtagPlugin();
+        const plugins = [mentionPlugin,hashtagPlugin];
+        return {plugins}
+    },[])
+    
+    
+    return  <div>
+            <Editor editorState={editorState} readOnly={true} plugins={plugins} onChange={setEditorState}/>
+        </div>
 }
 PostDisplay.propTypes = {
     postContent:PropTypes.object.isRequired

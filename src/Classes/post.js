@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { convertToHTML } from 'draft-convert';
 class Post {
     /**
      * 
@@ -23,7 +22,6 @@ class Post {
         this.likesCount = likesCount;
         this.commentsCount = commentsCount;
         this.kudosType = kudosType;
-        console.log(this)
     }
     get formattedPost(){
         return this;
