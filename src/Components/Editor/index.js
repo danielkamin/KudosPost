@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React,{useState,useRef,useMemo,useCallback} from 'react'
 import PropTypes from 'prop-types'
 
@@ -42,10 +43,8 @@ const TextInput = ({onMentionChange,large,editorState, setEditorState})=>{
         theme: editorStyles,
         supportWhitespace: true,
         mentionPrefix: '@',});
-    const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
-    // eslint-disable-next-line no-shadow
+    const { EmojiSuggestions, EmojiSelect } = emojiPlugin;   
     const { MentionSuggestions } = mentionPlugin;
-    // eslint-disable-next-line no-shadow
     const plugins = [mentionPlugin,emojiPlugin];
     return { plugins, MentionSuggestions,EmojiSuggestions,EmojiSelect };
     }, []);

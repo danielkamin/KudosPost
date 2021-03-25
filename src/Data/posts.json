@@ -2,7 +2,70 @@
     {
         "id":3,
         "author":"Daniel Kamiński",
-        "content":"Wielkie dzieki za działający HTML",
+        "content":{
+            "blocks": [
+                {
+                    "key": "1i0ii",
+                    "text": "Przykładowy post demonstujący możliwość Draft.js 🤑 🥶 ",
+                    "type": "unstyled",
+                    "depth": 0,
+                    "inlineStyleRanges": [],
+                    "entityRanges": [
+                        {
+                            "offset": 49,
+                            "length": 1,
+                            "key": 0
+                        },
+                        {
+                            "offset": 51,
+                            "length": 1,
+                            "key": 1
+                        }
+                    ],
+                    "data": {}
+                },
+                {
+                    "key": "3nd6g",
+                    "text": "@Daniel Kamiński ",
+                    "type": "unstyled",
+                    "depth": 0,
+                    "inlineStyleRanges": [],
+                    "entityRanges": [
+                        {
+                            "offset": 0,
+                            "length": 16,
+                            "key": 2
+                        }
+                    ],
+                    "data": {}
+                }
+            ],
+            "entityMap": {
+                "0": {
+                    "type": "emoji",
+                    "mutability": "IMMUTABLE",
+                    "data": {
+                        "emojiUnicode": "🤑"
+                    }
+                },
+                "1": {
+                    "type": "emoji",
+                    "mutability": "IMMUTABLE",
+                    "data": {
+                        "emojiUnicode": "🥶"
+                    }
+                },
+                "2": {
+                    "type": "mention",
+                    "mutability": "SEGMENTED",
+                    "data": {
+                        "mention": {
+                            "name": "Daniel Kamiński"
+                        }
+                    }
+                }
+            }
+        },
         "group":"Warszawa",
         "kudosPerson":"Jon Doe",
         "kudosType":1,
@@ -13,7 +76,70 @@
     {
         "id":2,
         "author":"Jon Doe",
-        "content":"Wielkie dzieki za działający HTML",
+        "content":{
+            "blocks": [
+                {
+                    "key": "1i0ii",
+                    "text": "Przykładowy post demonstujący możliwość Draft.js 🤑 🥶 ",
+                    "type": "unstyled",
+                    "depth": 0,
+                    "inlineStyleRanges": [],
+                    "entityRanges": [
+                        {
+                            "offset": 49,
+                            "length": 1,
+                            "key": 0
+                        },
+                        {
+                            "offset": 51,
+                            "length": 1,
+                            "key": 1
+                        }
+                    ],
+                    "data": {}
+                },
+                {
+                    "key": "3nd6g",
+                    "text": "@Daniel Kamiński ",
+                    "type": "unstyled",
+                    "depth": 0,
+                    "inlineStyleRanges": [],
+                    "entityRanges": [
+                        {
+                            "offset": 0,
+                            "length": 16,
+                            "key": 2
+                        }
+                    ],
+                    "data": {}
+                }
+            ],
+            "entityMap": {
+                "0": {
+                    "type": "emoji",
+                    "mutability": "IMMUTABLE",
+                    "data": {
+                        "emojiUnicode": "🤑"
+                    }
+                },
+                "1": {
+                    "type": "emoji",
+                    "mutability": "IMMUTABLE",
+                    "data": {
+                        "emojiUnicode": "🥶"
+                    }
+                },
+                "2": {
+                    "type": "mention",
+                    "mutability": "SEGMENTED",
+                    "data": {
+                        "mention": {
+                            "name": "Daniel Kamiński"
+                        }
+                    }
+                }
+            }
+        },
         "group":"Białystok",
         "kudosPerson":"Jon Doe",
         "kudosType":2,
@@ -24,7 +150,70 @@
     {
         "id":1,
         "author":"Daniel Kamiński",
-        "content":"Wielkie dzieki za działający HTML",
+        "content":{
+            "blocks": [
+                {
+                    "key": "1i0ii",
+                    "text": "Przykładowy post demonstujący możliwość Draft.js 🤑 🥶 ",
+                    "type": "unstyled",
+                    "depth": 0,
+                    "inlineStyleRanges": [],
+                    "entityRanges": [
+                        {
+                            "offset": 49,
+                            "length": 1,
+                            "key": 0
+                        },
+                        {
+                            "offset": 51,
+                            "length": 1,
+                            "key": 1
+                        }
+                    ],
+                    "data": {}
+                },
+                {
+                    "key": "3nd6g",
+                    "text": "@Daniel Kamiński ",
+                    "type": "unstyled",
+                    "depth": 0,
+                    "inlineStyleRanges": [],
+                    "entityRanges": [
+                        {
+                            "offset": 0,
+                            "length": 16,
+                            "key": 2
+                        }
+                    ],
+                    "data": {}
+                }
+            ],
+            "entityMap": {
+                "0": {
+                    "type": "emoji",
+                    "mutability": "IMMUTABLE",
+                    "data": {
+                        "emojiUnicode": "🤑"
+                    }
+                },
+                "1": {
+                    "type": "emoji",
+                    "mutability": "IMMUTABLE",
+                    "data": {
+                        "emojiUnicode": "🥶"
+                    }
+                },
+                "2": {
+                    "type": "mention",
+                    "mutability": "SEGMENTED",
+                    "data": {
+                        "mention": {
+                            "name": "Daniel Kamiński"
+                        }
+                    }
+                }
+            }
+        },
         "group":"Kraków",
         "kudosPerson":"Daniel Kamiński",
         "kudosType":3,

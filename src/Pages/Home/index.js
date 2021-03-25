@@ -19,6 +19,7 @@ import agreementIcon from '../../assets/images/agreement.svg'
 const Home = ()=>{
     const {contextPosts , setContextPosts} = useContext(AppContext);
     const handleSubmitPost = (kudosPerson,editorStateCurrentContent,groupSelected,kudosSelected)=>{
+        console.log(editorStateCurrentContent)
         const newPost = new Post(new Date(),editorStateCurrentContent,kudosPerson,groupSelected,kudosSelected,contextPosts[0].id+1)
         setContextPosts([newPost,...contextPosts])
     }

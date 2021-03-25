@@ -4,7 +4,7 @@ import {EditorState,convertToRaw} from "draft-js";
 
 //form components input
 import CustomButton from '../Button/index'
-import TextInput from '../TextInput/index'
+import TextInput from '../Editor/index'
 import CustomSelect from '../Select'
 import Kudos from '../Kudos/index'
 import PersonSelect from '../PersonSelect/index'
@@ -52,7 +52,7 @@ const NewPost= ({onSubmit})=>{
     }
     const createKudosPost = (e)=>{
         e.preventDefault();
-        onSubmit(kudosPerson,convertToRaw(editorState.getCurrentContent()).blocks[0].text,groupSelected,kudosSelected);
+        onSubmit(kudosPerson,convertToRaw(editorState.getCurrentContent()),groupSelected,kudosSelected);
     }
     return (
         <StyledForm onSubmit={createKudosPost}>
