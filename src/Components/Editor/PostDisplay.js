@@ -9,6 +9,9 @@ import {EditorState,convertFromRaw} from "draft-js";
 import Editor from "@draft-js-plugins/editor"
 import editorStyles from './EditorStyles.module.css';
 
+
+
+//disabled (READ-ONLY) draft.js editor for displaying saved content without changing anything
 const PostDisplay = ({postContent})=>{
     const content = convertFromRaw(postContent);  
     const [editorState, setEditorState] = useState(() =>

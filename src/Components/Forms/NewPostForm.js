@@ -6,17 +6,16 @@ import {EditorState,convertToRaw} from "draft-js";
 //form components input
 import SimpleButton from '../Buttons/SimpleButton'
 import PostContent from '../Editor/PostContent'
-import CustomSelect from '../Select'
-import Kudos from '../Kudos/index'
-import PersonSelect from '../PersonSelect/index'
+import KudosMention from '../Editor/KudosMention'
+import CustomSelect from '../Select/Select'
+import Kudos from '../Kudos/Kudos'
 
 //data import
 import groups from '../../Data/groups.json'
 import kudosTypes from '../../Data/kudosTypes'
 
 //styles import
-import styled from 'styled-components';
-
+import styled,{css} from 'styled-components';
 
 
 //styles declaration
@@ -34,27 +33,44 @@ font-weight:bold;
 margin-bottom:10px;
 margin-top:20px;
 `
+const LastSubTitle = styled(StyledSubTitle)`
+margin-top:0;
+`
 const StyledError = styled.p`
 margin-top:10px;
 text-align:center;
 color:red;
 `
+
+const SelectableKudos = styled(Kudos)`
+${({selected})=>
+selected? css`
+    background:${props=>props.theme.colors.border.primary};
+    border:1px solid ${props=>props.theme.colors.details.primary}
+    `:css`
+    background:${props=>props.theme.colors.background.secondary};
+        border:1px solid ${props=>props.theme.colors.border.primary};
+    `}
+`
+
+
+//component that handles new post submission 
 const NewPostForm= ({onSubmit})=>{
-    const [kudosPerson,setKudosPerson] = useState('')
+    const [kudosPerson,setKudosPerson] = useState(()=>{return ''});
+    const [editorMentionState, setEditorMentionState] = useState(() =>
+        EditorState.createEmpty()
+    );
     const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
     );
     const [errorMessage,setErrorMessage] = useState('')   
-    const [groupSelected,setGroupSelected] = useState(+groups[0].id)
+    const [groupSelected,setGroupSelected] = useState(groups[0])
     const [kudosSelected,setKudosSelected] = useState(kudosTypes[0].id)
     useEffect(()=>{
     },[])
     const handleKudosSelect = (e) =>{
         setKudosSelected(e)
     }
-    const handleSelectGroupChange = (e)=>{
-        setGroupSelected(+e.target.value)
-    } 
     const handleMentionChange = (e)=>{
         setKudosPerson(e.name)
     }
@@ -65,6 +81,12 @@ const NewPostForm= ({onSubmit})=>{
         else {
             setErrorMessage('')
             onSubmit(kudosPerson,convertToRaw(editorState.getCurrentContent()),groupSelected,kudosSelected);
+            setEditorMentionState(()=>
+            EditorState.createEmpty())
+            setEditorState(()=>
+            EditorState.createEmpty())
+            setGroupSelected(groups[0])
+            setKudosSelected(kudosTypes[0].id)
         }
     }
     return (
@@ -74,24 +96,26 @@ const NewPostForm= ({onSubmit})=>{
             </StyledError>
             <div>
                 <StyledSubTitle>Treść posta nad kudosem</StyledSubTitle>
-                <PostContent large onMentionChange={handleMentionChange} editorState={editorState} setEditorState={setEditorState} maxCharacters={500}/>
+                <PostContent large showWordCount={true}   editorState={editorState} setEditorState={setEditorState} maxCharacters={500}/>
             </div>
             <div>
                 <StyledSubTitle>Wybierz osobę której przyznajesz kudos</StyledSubTitle>
-                <PersonSelect person={kudosPerson} deleteKudos={()=>setKudosPerson('')}/>
+                <KudosMention editorState={editorMentionState} setEditorState={setEditorMentionState} onMentionChange={handleMentionChange}/>
             </div>
             <StyledSubTitle>Wybierz kudos</StyledSubTitle>
             {kudosTypes.map(kudos=>(
-                <Kudos id={kudos.id} key={kudos.id} text={kudos.text} imageUrl={kudos.imageUrl} selected={kudosSelected === kudos.id ? true : false} onClick={handleKudosSelect}/>
+                <SelectableKudos id={kudos.id} key={kudos.id} text={kudos.text} imageUrl={kudos.imageUrl} selected={kudosSelected === kudos.id ? true : false} onClick={()=>handleKudosSelect(kudos.id)}/>
             ))}
-            <StyledSubTitle>Wybierz grupę</StyledSubTitle>
+            <LastSubTitle>Wybierz grupę</LastSubTitle>
             <StyledDiv>  
-                <CustomSelect items={groups} onChange={handleSelectGroupChange} value={groupSelected}/>
+                <CustomSelect items={groups} onChange={setGroupSelected} value={groupSelected}/>
                 <SimpleButton type='submit'>Opublikuj</SimpleButton>
             </StyledDiv>        
         </StyledForm>
     )
 }
+
+
 NewPostForm.propTypes = {
     onSubmit:PropTypes.func.isRequired
 }

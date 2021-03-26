@@ -33,11 +33,12 @@ ${({large})=>
 large ? 
     css`min-height: 120px;
     padding:12px;` : 
-    css`padding:5px;
+    css`padding:6px;
     min-height: 30px;`}
 `
 
-const PostContent = ({onMentionChange,large,editorState, setEditorState,maxCharacters,placeHolder})=>{
+//draft.js editor to write kudos post content and message
+const PostContent = ({onMentionChange,large,editorState, setEditorState,maxCharacters,placeHolder,showWordCount,secondary})=>{
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
     const [suggestions,setSuggestions]=useState(users)
@@ -67,14 +68,16 @@ const PostContent = ({onMentionChange,large,editorState, setEditorState,maxChara
                 <EmojiSuggestions />
                 <MentionSuggestions onSearchChange={handleSearchChange} suggestions={suggestions} open={open}
                 onOpenChange={handleOpenChange}  onAddMention={onMentionChange}/>
-            <div className={editorStyles.options}>
+            <div className={secondary?editorStyles.optionsSecondary :editorStyles.options}>
                 <EmojiSelect className={editorStyles.emojiSelect}/>
                 <IconButton disabled={true}><img src={Attach}/></IconButton>
                 <IconButton disabled={true}><img src={Gif}/></IconButton>
             </div>
-            <div className={editorStyles.maxCharacter}>
+            {showWordCount && 
+            <div className={editorStyles.maxCharacter} secondary={secondary}>
                 {editorState.getCurrentContent().getPlainText('').length}/{maxCharacters}
-            </div>
+            </div>}
+            
         </StyledTextInput>
     )
 }
@@ -85,6 +88,8 @@ PostContent.propTypes = {
     editorState:PropTypes.object,
     maxCharacters:PropTypes.number,
     placeHolder:PropTypes.string,
+    showWordCount:PropTypes.bool,
+    secondary:PropTypes.bool
 }
 
 export default PostContent;

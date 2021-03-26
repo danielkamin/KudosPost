@@ -1,3 +1,6 @@
+//file containing theme object, that defines color pallete, sizing 
+//and other css attributes in the application
+
 /**
  * @property {object} theme -   Object containing properties such as colors, size, spacing etc
  * @property {object} theme.colors  -   Object containing colors used in the app
@@ -32,7 +35,8 @@ const theme = {
         md:`14px`,
         lg:`20px`
     },
-    borderRadius:`6px`
+    borderRadius:`6px`,
+    padding:`16px`
 }
 
 export default theme;

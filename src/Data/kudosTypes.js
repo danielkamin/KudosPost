@@ -9,7 +9,7 @@
     {
         id:2,
         text:"Gratulacje!",
-        imageUrl:require("../assets/images/undraw_super_thank_you_obwk.svg")
+        imageUrl:require("../assets/images/thank_you.svg")
     },
     {
         id:3,

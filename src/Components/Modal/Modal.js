@@ -4,39 +4,41 @@ import styled,{css} from 'styled-components';
 import close from '../../assets/images/close.svg'
 import IconButton from '../Buttons/IconButton'
 
+
 const StyledModal = styled.div`
-position:absolute;
-top:10%;
-z-index:100;
-border:1px solid ${props=>props.theme.colors.border.secondary};
-border-radius:${props=>props.theme.borderRadius};
-background:${props=>props.theme.colors.background.secondary};
-width:560px;
-padding:20px 40px;
-${({open})=>
-open ? css`
-display:block;
-`:css`display:none;`}
+    color:${props=>props.theme.colors.text.secondarylight};
+    position:absolute;
+    top:0;
+    z-index:100;
+    border:1px solid ${props=>props.theme.colors.border.secondary};
+    border-radius:${props=>props.theme.borderRadius};
+    background:${props=>props.theme.colors.background.secondary};
+    width:568px;
+    padding:20px 30px;
+    ${({open})=>
+        open ? css`
+        display:block;
+        `:css`display:none;`}
 `
 const StyledModalHeader = styled.div`
-display:flex;
-align-items: center;
-& > div {
-    margin-left:auto;
-}
-& > p{
-    margin:0 10px;
-    font-weight:bold;
-    text-transform:uppercase;
-}
+    display:flex;
+    align-items: center;
+    & > div {
+        margin-left:auto;
+    }
+    & > p{
+        margin:0 10px;
+        font-weight:bold;
+        text-transform:uppercase;
+    }
 `
+//Reusable modal for displaying content on the page
 const CustomModal = ({children,text,icon,open,closeModal})=>{
-    console.log(children)
     return <StyledModal open={open}>
         <StyledModalHeader>
             <img src={icon}/>
             <p>{text}</p>
-            <IconButton secondary onClick={closeModal}>
+            <IconButton onClick={closeModal} background={true} secondary={true}>
                 <img src={close}/>
             </IconButton>
         </StyledModalHeader>

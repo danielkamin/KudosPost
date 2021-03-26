@@ -1,4 +1,5 @@
-/* File created to override draft-js-plugins css problem*/
+/* File created to import styles and override draft-js-plugins css problem*/
 @import '@draft-js-plugins/mention/lib/plugin.css';
 @import '@draft-js-plugins/emoji/lib/plugin.css';
 @import '@draft-js-plugins/hashtag/lib/plugin.css';
+@import 'draft-js/dist/Draft.css';

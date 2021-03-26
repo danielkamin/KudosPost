@@ -1,22 +1,22 @@
 [
     {"id":1,
     "content":"Białystok",
-    "icon":"\uf64f"
+    "icon":"fa-building"
     },
     {"id":2,
     "content":"Kraków",
-    "icon":"\uf64f"
+    "icon":"fa-university"
     },
     {"id":3,
     "content":"Warszawa",
-    "icon":"\uf64f"
+    "icon":"fa-building"
     },
     {"id":4,
     "content":"Gdańsk",
-    "icon":"\uf64f"
+    "icon":"fa-university"
     },
     {"id":5,
     "content":"Poznań",
-    "icon":"\uf64f"
+    "icon":"fa-building"
     }
 ]

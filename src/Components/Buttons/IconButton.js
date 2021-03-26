@@ -4,28 +4,35 @@ import styled,{css} from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledIconButton = styled.button`
-border:none;
-padding:5px;
-background: ${props=>props.theme.colors.details.primary};
-border-radius: ${props=>props.theme.borderRadius};
-line-height:1em;
-transition: opacity 0.3s;
-cursor: pointer;
-&:hover{
-    opacity:0.5;
+    border:none;
+    border-radius: ${props=>props.theme.borderRadius};
+    line-height:1em;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    &:hover{
+        opacity:0.5;
 }
-${({secondary})=>
-secondary? css`
+${({background})=>
+background? css`
+    padding:5px;
     background: ${props=>props.theme.colors.border.primary};
+    ${({secondary})=>
+    secondary? css`
+        background: ${props=>props.theme.colors.border.primary};
+    `:css`
+        background: ${props=>props.theme.colors.details.primary};
+    `}
 `:css`
-    background: ${props=>props.theme.colors.details.primary};
+    background: none;
 `}
-`
 
-const IconButton = ({secondary,children,disabled,onClick})=>{
+}
+`
+//Custom icon button with posibility to bind onClick functions
+const IconButton = ({background,secondary,children,disabled,onClick})=>{
     return (
         <div>
-            <StyledIconButton secondary={secondary} disabled={disabled} onClick={onClick}>
+            <StyledIconButton background={background} secondary={secondary} disabled={disabled} onClick={onClick}>
                 {children}
             </StyledIconButton>
         </div>
@@ -38,5 +45,6 @@ IconButton.propTypes = {
     children:PropTypes.element,
     disabled:PropTypes.bool,
     secondary:PropTypes.bool,
-    onClick:PropTypes.func
+    onClick:PropTypes.func,
+    background:PropTypes.bool
 }
